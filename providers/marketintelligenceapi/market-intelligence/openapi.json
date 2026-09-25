@@ -4233,9 +4233,11 @@
                             "description": "Follow-up routes: preTradeCheck, positioning, smartMoney, trackRecord"
                           },
                           "calibratedHitRatePercent": {
-                            "type": "number",
-                            "nullable": true,
-                            "description": "Live hit rate behind this result (signal 1h, or crowding events 4h for crowded_positioning); null below 30 samples"
+                            "type": [
+                              "number",
+                              "null"
+                            ],
+                            "description": "Live hit rate behind this result (the signal 1h record in the result direction, or crowding events 4h for crowded_positioning); null below 30 evaluated samples"
                           },
                           "positioningTrackRecord4h": {
                             "type": "object",
@@ -4498,7 +4500,7 @@
                             "type": "integer",
                             "minimum": 0,
                             "maximum": 100,
-                            "description": "40 for meeting the objective + up to 20 for strength + 15 per extra confirming source + 10 for a live 1h hit rate >= 55% on >= 30 samples, - 10 per conflicting item, - 5 per HIGH risk"
+                            "description": "40 for meeting the objective + up to 20 for strength + 15 per extra confirming source +/- up to 15 for calibration (live hit rate minus 50 on >= 30 samples), - 10 per conflicting item, - 5 per HIGH risk"
                           },
                           "independentSourcesConfirming": {
                             "type": "integer"
@@ -4628,6 +4630,17 @@
                           "nextCalls": {
                             "type": "object",
                             "description": "Follow-up routes: preTradeCheck, positioning, smartMoney, trackRecord"
+                          },
+                          "calibratedHitRatePercent": {
+                            "type": [
+                              "number",
+                              "null"
+                            ],
+                            "description": "Live hit rate behind this result (the signal 1h record in the result direction, or crowding events 4h for crowded_positioning); null below 30 evaluated samples"
+                          },
+                          "positioningTrackRecord4h": {
+                            "type": "object",
+                            "description": "crowded_positioning only: 4h record of crowding events on this side"
                           }
                         }
                       }
@@ -5027,9 +5040,11 @@
                             "description": "Follow-up routes: preTradeCheck, positioning, smartMoney, trackRecord"
                           },
                           "calibratedHitRatePercent": {
-                            "type": "number",
-                            "nullable": true,
-                            "description": "Live hit rate behind this result (signal 1h, or crowding events 4h for crowded_positioning); null below 30 samples"
+                            "type": [
+                              "number",
+                              "null"
+                            ],
+                            "description": "Live hit rate behind this result (the signal 1h record in the result direction, or crowding events 4h for crowded_positioning); null below 30 evaluated samples"
                           },
                           "positioningTrackRecord4h": {
                             "type": "object",
@@ -5292,7 +5307,7 @@
                             "type": "integer",
                             "minimum": 0,
                             "maximum": 100,
-                            "description": "40 for meeting the objective + up to 20 for strength + 15 per extra confirming source + 10 for a live 1h hit rate >= 55% on >= 30 samples, - 10 per conflicting item, - 5 per HIGH risk"
+                            "description": "40 for meeting the objective + up to 20 for strength + 15 per extra confirming source +/- up to 15 for calibration (live hit rate minus 50 on >= 30 samples), - 10 per conflicting item, - 5 per HIGH risk"
                           },
                           "independentSourcesConfirming": {
                             "type": "integer"
@@ -5422,6 +5437,17 @@
                           "nextCalls": {
                             "type": "object",
                             "description": "Follow-up routes: preTradeCheck, positioning, smartMoney, trackRecord"
+                          },
+                          "calibratedHitRatePercent": {
+                            "type": [
+                              "number",
+                              "null"
+                            ],
+                            "description": "Live hit rate behind this result (the signal 1h record in the result direction, or crowding events 4h for crowded_positioning); null below 30 evaluated samples"
+                          },
+                          "positioningTrackRecord4h": {
+                            "type": "object",
+                            "description": "crowded_positioning only: 4h record of crowding events on this side"
                           }
                         }
                       }
